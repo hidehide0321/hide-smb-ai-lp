@@ -1,0 +1,1088 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>中小企業向けAI業務改善パック｜AI研修ではなく、AIで業務を仕組み化するサービス</title>
+  <meta name="description" content="AI研修を受けても業務が変わらない理由は、仕組み化されていないからです。5万円の「AI業務診断＋デモ構築」で、御社の業務に使える仕組みを実際にお見せします。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===========================
+       CSS カスタムプロパティ（設計トークン）
+    =========================== */
+    :root {
+      --blue-deep:    #0D2B55;
+      --blue-mid:     #1A4A8A;
+      --blue-light:   #2E6DB4;
+      --blue-pale:    #E8F2FF;
+      --blue-bg:      #F0F6FF;
+      --gold:         #C9A84C;
+      --gold-light:   #E4C76B;
+      --gold-pale:    #FBF5E6;
+      --white:        #FFFFFF;
+      --gray-100:     #F7F8FA;
+      --gray-200:     #EAECEF;
+      --gray-500:     #8B96A5;
+      --gray-700:     #4A5568;
+      --gray-900:     #1A202C;
+      --shadow-sm:    0 2px 8px rgba(13, 43, 85, 0.08);
+      --shadow-md:    0 8px 24px rgba(13, 43, 85, 0.12);
+      --shadow-lg:    0 20px 48px rgba(13, 43, 85, 0.16);
+      --radius-sm:    6px;
+      --radius-md:    12px;
+      --radius-lg:    20px;
+      --font-sans:    'Noto Sans JP', sans-serif;
+      --font-serif:   'Noto Serif JP', serif;
+      --transition:   0.25s ease;
+    }
+
+    /* ===========================
+       リセット & ベース
+    =========================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--gray-900);
+      background: var(--white);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===========================
+       ユーティリティ
+    =========================== */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section {
+      padding: 88px 0;
+    }
+    .section-alt {
+      background: var(--gray-100);
+    }
+    .section-blue {
+      background: var(--blue-deep);
+      color: var(--white);
+    }
+    .section-blue-pale {
+      background: var(--blue-bg);
+    }
+    .section-gold-pale {
+      background: var(--gold-pale);
+    }
+
+    /* セクション見出し */
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 4px;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 3.5vw, 36px);
+      font-weight: 700;
+      line-height: 1.45;
+      color: var(--blue-deep);
+      margin-bottom: 24px;
+    }
+    .section-blue .section-title { color: var(--white); }
+    .section-blue .section-label { color: var(--gold-light); border-color: var(--gold-light); }
+    .section-lead {
+      font-size: 16px;
+      color: var(--gray-700);
+      line-height: 1.9;
+    }
+    .section-blue .section-lead { color: rgba(255,255,255,0.85); }
+
+    /* CTAボタン */
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--blue-deep);
+      color: var(--white);
+      font-size: 17px;
+      font-weight: 700;
+      padding: 20px 44px;
+      border-radius: 50px;
+      border: 2px solid var(--gold);
+      box-shadow: 0 4px 20px rgba(13,43,85,0.3), 0 0 0 1px rgba(201,168,76,0.2);
+      cursor: pointer;
+      transition: all var(--transition);
+      letter-spacing: 0.04em;
+    }
+    .btn-cta:hover {
+      background: var(--blue-mid);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(13,43,85,0.4), 0 0 0 2px var(--gold);
+    }
+    .btn-cta .price-accent {
+      color: var(--gold-light);
+      font-weight: 900;
+    }
+    .btn-cta-wrap {
+      text-align: center;
+      margin-top: 48px;
+    }
+    .btn-cta-large {
+      font-size: 19px;
+      padding: 24px 56px;
+    }
+
+    /* ===========================
+       ヘッダー（スティッキー）
+    =========================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(13, 43, 85, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.3);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .header-logo {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.05em;
+    }
+    .header-logo span { color: var(--gold-light); }
+    .header-cta {
+      background: var(--gold);
+      color: var(--blue-deep);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 24px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition);
+      letter-spacing: 0.04em;
+    }
+    .header-cta:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    /* ===========================
+       1. ファーストビュー
+    =========================== */
+    .hero {
+      padding-top: 72px; /* ヘッダー分 */
+      background: var(--blue-deep);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26,74,138,0.4) 0%, rgba(13,43,85,0.2) 100%);
+      pointer-events: none;
+    }
+    .hero-image-wrap {
+      position: relative;
+    }
+    .hero-image-wrap img {
+      width: 100%;
+      max-height: 600px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .hero-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(to top, var(--blue-deep) 0%, transparent 100%);
+    }
+    .hero-content {
+      position: relative;
+      padding: 56px 0 72px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      padding: 6px 20px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 4vw, 46px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--gold-light);
+    }
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 18px);
+      color: rgba(255,255,255,0.80);
+      margin-bottom: 44px;
+      line-height: 1.9;
+    }
+    /* AI活用注記バナー */
+    .hero-notice {
+      background: rgba(46, 109, 180, 0.25);
+      border: 1px solid rgba(46,109,180,0.5);
+      border-radius: var(--radius-md);
+      padding: 20px 32px;
+      margin-top: 48px;
+      text-align: left;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .hero-notice-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .hero-notice-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.85;
+    }
+    .hero-notice-text strong {
+      color: var(--gold-light);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    /* ===========================
+       2. AI研修との違い
+    =========================== */
+    .diff-section { }
+    .diff-image-wrap {
+      margin-top: 48px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .diff-image-wrap img { width: 100%; }
+
+    /* ===========================
+       3. 属人化の問題提起
+    =========================== */
+    .problem-section { }
+    .problem-list {
+      list-style: none;
+      margin: 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .problem-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--gray-700);
+    }
+    .problem-list li::before {
+      content: '▸';
+      color: var(--gold);
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .problem-conclusion {
+      background: var(--blue-deep);
+      color: var(--white);
+      border-radius: var(--radius-md);
+      padding: 32px 40px;
+      margin-top: 40px;
+      border-left: 4px solid var(--gold);
+    }
+    .problem-conclusion p {
+      font-size: 17px;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.90);
+    }
+    .problem-conclusion strong {
+      color: var(--gold-light);
+    }
+    .problem-image-wrap {
+      margin-top: 48px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .problem-image-wrap img { width: 100%; }
+
+    /* ===========================
+       4. 5万円診断の流れ
+    =========================== */
+    .flow-section { }
+    .flow-lead-box {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      padding: 28px 36px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .flow-lead-box::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--gold), var(--blue-light));
+      border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    }
+    .flow-image-wrap {
+      margin-top: 48px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .flow-image-wrap img { width: 100%; }
+
+    /* ===========================
+       5. デモシステム例
+    =========================== */
+    .demo-section { }
+    .demo-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 28px 0;
+    }
+    .demo-tag {
+      background: var(--white);
+      border: 1.5px solid var(--blue-light);
+      color: var(--blue-mid);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 8px 20px;
+      border-radius: 50px;
+      letter-spacing: 0.03em;
+    }
+    .demo-image-wrap {
+      margin-top: 48px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .demo-image-wrap img { width: 100%; }
+
+    /* ===========================
+       6. 5万円診断でわかること（カード）
+    =========================== */
+    .cards-section { }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 36px 28px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--blue-light));
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .card-number {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--blue-deep);
+      margin-bottom: 12px;
+    }
+    .card-text {
+      font-size: 14px;
+      color: var(--gray-700);
+      line-height: 1.85;
+    }
+    /* 5枚目カードは中央に */
+    .card:last-child:nth-child(odd):nth-last-child(1) {
+      grid-column: 2;
+    }
+
+    /* ===========================
+       7. よくある質問（アコーディオン）
+    =========================== */
+    .faq-section { }
+    .faq-list {
+      list-style: none;
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px 28px;
+      cursor: pointer;
+      user-select: none;
+      transition: background var(--transition);
+    }
+    .faq-question:hover { background: var(--blue-bg); }
+    .faq-question[aria-expanded="true"] { background: var(--blue-pale); }
+    .faq-q-text {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--blue-deep);
+      line-height: 1.6;
+    }
+    .faq-q-icon {
+      background: var(--blue-deep);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 900;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .faq-arrow {
+      color: var(--blue-light);
+      font-size: 18px;
+      transition: transform var(--transition);
+      flex-shrink: 0;
+    }
+    .faq-question[aria-expanded="true"] .faq-arrow { transform: rotate(180deg); }
+    .faq-answer {
+      display: none;
+      padding: 0 28px 24px 68px;
+      font-size: 15px;
+      color: var(--gray-700);
+      line-height: 1.9;
+    }
+    .faq-answer.is-open { display: block; }
+
+    /* ===========================
+       8. 最終CTA
+    =========================== */
+    .final-cta {
+      background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-mid) 100%);
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -10%;
+      width: 120%;
+      height: 200%;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.06) 0%, transparent 70%);
+    }
+    .final-cta-title {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .final-cta-title span {
+      color: var(--gold-light);
+    }
+    .final-cta-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.9;
+      margin-bottom: 48px;
+    }
+    .final-price-note {
+      display: inline-block;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold-light);
+      font-size: 13px;
+      padding: 8px 24px;
+      border-radius: 50px;
+      margin-top: 24px;
+    }
+
+    /* ===========================
+       フッター
+    =========================== */
+    .site-footer {
+      background: #0A1F3E;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+    }
+    .site-footer a { color: rgba(255,255,255,0.6); }
+
+    /* ===========================
+       区切り装飾
+    =========================== */
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--blue-light));
+      margin: 0 auto 32px;
+      border-radius: 2px;
+    }
+    .divider-left {
+      margin: 0 0 32px;
+    }
+
+    /* ===========================
+       アニメーション
+    =========================== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in-up {
+      animation: fadeInUp 0.7s ease both;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.35s; }
+
+    /* スクロールアニメーション */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===========================
+       レスポンシブ
+    =========================== */
+    @media (max-width: 768px) {
+      .section { padding: 64px 0; }
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .card:last-child:nth-child(odd):nth-last-child(1) {
+        grid-column: 1;
+      }
+      .hero-content { padding: 44px 0 56px; }
+      .btn-cta { font-size: 15px; padding: 18px 32px; }
+      .btn-cta-large { font-size: 16px; padding: 20px 36px; }
+      .problem-conclusion { padding: 24px 28px; }
+      .flow-lead-box { padding: 22px 24px; }
+      .hero-notice { padding: 16px 20px; flex-direction: column; gap: 10px; }
+      .faq-answer { padding-left: 28px; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .section-title { font-size: 22px; }
+      .hero-title { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===========================
+       固定ヘッダー
+  =========================== -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <div class="header-logo">中小企業向け<span>AI業務改善パック</span></div>
+      <a href="#final-cta" class="header-cta">まず5万円で試す</a>
+    </div>
+  </header>
+
+  <!-- ===========================
+       1. ファーストビュー
+  =========================== -->
+  <section class="hero" id="hero" aria-label="ファーストビュー">
+    <div class="hero-image-wrap">
+      <img
+        src="images/小室秀治_ビジネスAI_1.png"
+        alt="AI研修ではなく、AIで業務を仕組み化するサービス"
+        loading="eager"
+      />
+      <div class="hero-overlay" aria-hidden="true"></div>
+    </div>
+    <div class="hero-content">
+      <div class="container">
+        <p class="hero-badge fade-in-up">中小企業向けAI業務改善パック</p>
+        <h1 class="hero-title fade-in-up delay-1">
+          AI研修ではなく、<br />AIで業務を<em>仕組み化</em>するサービスです。
+        </h1>
+        <p class="hero-sub fade-in-up delay-2">
+          AIを学ぶだけで終わらせません。<br />
+          御社の業務に使える仕組みとして納品します。
+        </p>
+        <div class="fade-in-up delay-3">
+          <a href="#final-cta" class="btn-cta" id="hero-cta">
+            <span><span class="price-accent">5万円</span>で自社のAI活用デモを見る</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+        <!-- AI活用注記 -->
+        <div class="hero-notice fade-in-up delay-3" role="note" aria-label="AIを活用した制作注記">
+          <div class="hero-notice-icon" aria-hidden="true">💡</div>
+          <div class="hero-notice-text">
+            <strong>このページ自体が、AIを実務で使った成果物です。</strong>
+            このLPの構成・文章・図解・画像は、AIを活用して制作しています。
+            AIは、もう「学ぶだけ」のものではありません。
+            業務整理、資料作成、図解、仕組み化まで、実務で使える時代です。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       2. AI研修との違い
+  =========================== -->
+  <section class="section diff-section" id="difference" aria-labelledby="diff-heading">
+    <div class="container">
+      <p class="section-label reveal">What's Different</p>
+      <h2 class="section-title reveal" id="diff-heading">
+        AI研修とAI実装サービスの違い
+      </h2>
+      <div class="divider divider-left reveal"></div>
+      <div class="section-lead reveal">
+        <p>AI研修を受けても、現場の業務が変わらないことがあります。<br />
+        理由はシンプルです。<strong>学ぶことと、業務で使える仕組みを作ることは別だからです。</strong></p>
+        <br />
+        <p>社員がAIを学んでも、どの業務に使うのか、どう運用するのか、誰が管理するのかが決まっていなければ、結局使われません。</p>
+        <br />
+        <p>このサービスは、AIを学ぶ講座ではありません。<br />
+        <strong>御社の業務に合わせて、実際に使える仕組みを作る実装サービスです。</strong></p>
+      </div>
+      <div class="diff-image-wrap reveal">
+        <img
+          src="images/小室秀治_ビジネスAI_2.png"
+          alt="AI研修とAI実装サービスの比較図"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       3. 属人化の問題提起
+  =========================== -->
+  <section class="section section-alt problem-section" id="problem" aria-labelledby="problem-heading">
+    <div class="container">
+      <p class="section-label reveal">Problem</p>
+      <h2 class="section-title reveal" id="problem-heading">
+        担当者に依存する会社から、<br />仕組みで回る会社へ
+      </h2>
+      <div class="divider divider-left reveal"></div>
+      <p class="section-lead reveal">中小企業では、長年の担当者だけが知っている仕事がたくさんあります。</p>
+      <ul class="problem-list reveal" aria-label="属人化の課題一覧">
+        <li>人に聞かないと分からない</li>
+        <li>資料がバラバラ</li>
+        <li>引き継ぎが大変</li>
+        <li>社長に確認が集中する</li>
+      </ul>
+      <p class="section-lead reveal">なんとなく危ないとは分かっている。<br />でも、忙しくて後回しになっている。</p>
+      <div class="problem-conclusion reveal">
+        <p><strong>そこにAIを入れます。</strong><br />
+        業務効率化だけでなく、<strong>会社に残る資産を作っていきます。</strong></p>
+      </div>
+      <div class="problem-image-wrap reveal">
+        <img
+          src="images/小室秀治_ビジネスAI_4.png"
+          alt="担当者依存からAI仕組み化へのビフォーアフター"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       4. 5万円診断の流れ
+  =========================== -->
+  <section class="section section-blue-pale flow-section" id="flow" aria-labelledby="flow-heading">
+    <div class="container">
+      <p class="section-label reveal">Step-by-Step</p>
+      <h2 class="section-title reveal" id="flow-heading">
+        まずは<span style="color:var(--blue-deep);font-weight:900;">5万円</span>の<br />「AI業務診断＋デモ構築」から始められます
+      </h2>
+      <div class="divider divider-left reveal"></div>
+      <div class="flow-lead-box reveal">
+        <p class="section-lead">
+          いきなり高額なシステム構築を提案するサービスではありません。<br /><br />
+          まずは御社の業務をヒアリングし、AIで効率化・仕組み化できる部分を整理します。<br /><br />
+          そのうえで、<strong>簡易デモシステムを作成し、実際にどう使えるのかを確認していただきます。</strong><br /><br />
+          診断後、必要な場合のみ本格構築をご提案します。
+        </p>
+      </div>
+      <div class="flow-image-wrap reveal">
+        <img
+          src="images/小室秀治_ビジネスAI_3.png"
+          alt="5万円診断の申し込み後の流れ・成果物・費用感"
+          loading="lazy"
+        />
+      </div>
+      <div class="btn-cta-wrap reveal">
+        <a href="#final-cta" class="btn-cta" id="flow-cta">
+          <span><span class="price-accent">5万円</span>で自社のAI活用デモを見る</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       5. デモシステム例
+  =========================== -->
+  <section class="section demo-section" id="demo" aria-labelledby="demo-heading">
+    <div class="container">
+      <p class="section-label reveal">Demo Examples</p>
+      <h2 class="section-title reveal" id="demo-heading">
+        御社専用のデモシステムで、<br />業務改善の形が見えます
+      </h2>
+      <div class="divider divider-left reveal"></div>
+      <p class="section-lead reveal">デモは、難しいAIツールの説明ではありません。<br />御社の業務に合わせて、まずは小さく試せる形にします。</p>
+      <div class="demo-tags reveal" aria-label="デモシステムの種類">
+        <span class="demo-tag">社内マニュアルAI</span>
+        <span class="demo-tag">問い合わせ対応AI</span>
+        <span class="demo-tag">新人教育AI</span>
+        <span class="demo-tag">社内FAQ</span>
+        <span class="demo-tag">引き継ぎシステム</span>
+        <span class="demo-tag">チェックリスト作成</span>
+      </div>
+      <div class="demo-image-wrap reveal">
+        <img
+          src="images/小室秀治_ビジネスAI_5.png"
+          alt="実際に作れるデモシステムの例一覧"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       6. 5万円診断でわかること
+  =========================== -->
+  <section class="section section-gold-pale cards-section" id="what-you-get" aria-labelledby="cards-heading">
+    <div class="container">
+      <p class="section-label reveal">What You Get</p>
+      <h2 class="section-title reveal" id="cards-heading">
+        5万円の診断でわかること
+      </h2>
+      <div class="divider reveal"></div>
+      <div class="cards-grid" role="list" aria-label="診断でわかること5つ">
+        <!-- カード1 -->
+        <article class="card reveal" role="listitem">
+          <p class="card-number">01 / INSIGHT</p>
+          <h3 class="card-title">AI化できる業務</h3>
+          <p class="card-text">どの業務にAIを使うと効果が出やすいかを整理します。</p>
+        </article>
+        <!-- カード2 -->
+        <article class="card reveal" role="listitem">
+          <p class="card-number">02 / INSIGHT</p>
+          <h3 class="card-title">属人化している業務</h3>
+          <p class="card-text">担当者に依存している仕事を見える化します。</p>
+        </article>
+        <!-- カード3 -->
+        <article class="card reveal" role="listitem">
+          <p class="card-number">03 / INSIGHT</p>
+          <h3 class="card-title">優先順位</h3>
+          <p class="card-text">最初に仕組み化すべき業務を提案します。</p>
+        </article>
+        <!-- カード4 -->
+        <article class="card reveal" role="listitem">
+          <p class="card-number">04 / DELIVERABLE</p>
+          <h3 class="card-title">デモシステム</h3>
+          <p class="card-text">御社の業務に合わせた簡易デモを確認できます。</p>
+        </article>
+        <!-- カード5 -->
+        <article class="card reveal" role="listitem">
+          <p class="card-number">05 / DELIVERABLE</p>
+          <h3 class="card-title">改善ロードマップ</h3>
+          <p class="card-text">本格導入する場合の進め方が見えます。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       7. よくある質問
+  =========================== -->
+  <section class="section faq-section" id="faq" aria-labelledby="faq-heading">
+    <div class="container">
+      <p class="section-label reveal">FAQ</p>
+      <h2 class="section-title reveal" id="faq-heading">よくある質問</h2>
+      <div class="divider divider-left reveal"></div>
+      <ul class="faq-list" role="list">
+
+        <li class="faq-item reveal">
+          <button
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-answer-1"
+            id="faq-btn-1"
+          >
+            <span class="faq-q-text">
+              <span class="faq-q-icon" aria-hidden="true">Q</span>
+              AIに詳しくなくても大丈夫ですか。
+            </span>
+            <span class="faq-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div
+            class="faq-answer"
+            id="faq-answer-1"
+            role="region"
+            aria-labelledby="faq-btn-1"
+          >
+            大丈夫です。AIの知識ではなく、御社の業務内容から整理します。専門用語が分からなくても問題ありません。
+          </div>
+        </li>
+
+        <li class="faq-item reveal">
+          <button
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-answer-2"
+            id="faq-btn-2"
+          >
+            <span class="faq-q-text">
+              <span class="faq-q-icon" aria-hidden="true">Q</span>
+              どんな資料を用意すればいいですか。
+            </span>
+            <span class="faq-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div
+            class="faq-answer"
+            id="faq-answer-2"
+            role="region"
+            aria-labelledby="faq-btn-2"
+          >
+            マニュアル、Excel、メール文面、社内ルール、よくある質問などがあると進めやすいです。なければ、ヒアリングの中で一緒に整理します。
+          </div>
+        </li>
+
+        <li class="faq-item reveal">
+          <button
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-answer-3"
+            id="faq-btn-3"
+          >
+            <span class="faq-q-text">
+              <span class="faq-q-icon" aria-hidden="true">Q</span>
+              5万円診断だけでも依頼できますか。
+            </span>
+            <span class="faq-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div
+            class="faq-answer"
+            id="faq-answer-3"
+            role="region"
+            aria-labelledby="faq-btn-3"
+          >
+            可能です。診断後に本格構築へ進むかどうかを判断できます。無理な継続提案は行いません。
+          </div>
+        </li>
+
+        <li class="faq-item reveal">
+          <button
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-answer-4"
+            id="faq-btn-4"
+          >
+            <span class="faq-q-text">
+              <span class="faq-q-icon" aria-hidden="true">Q</span>
+              高額なシステムを売り込まれませんか。
+            </span>
+            <span class="faq-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div
+            class="faq-answer"
+            id="faq-answer-4"
+            role="region"
+            aria-labelledby="faq-btn-4"
+          >
+            無理な営業は行いません。まずは診断とデモで、必要性を確認していただきます。進むかどうかは御社のご判断です。
+          </div>
+        </li>
+
+        <li class="faq-item reveal">
+          <button
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-answer-5"
+            id="faq-btn-5"
+          >
+            <span class="faq-q-text">
+              <span class="faq-q-icon" aria-hidden="true">Q</span>
+              社員が使えるか不安です。
+            </span>
+            <span class="faq-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div
+            class="faq-answer"
+            id="faq-answer-5"
+            role="region"
+            aria-labelledby="faq-btn-5"
+          >
+            操作だけでなく、使い方や運用ルールも含めて提案します。現場に定着することを前提に設計します。
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===========================
+       8. 最終CTA
+  =========================== -->
+  <section class="final-cta" id="final-cta" aria-labelledby="final-cta-heading">
+    <div class="container" style="position:relative;">
+      <p class="section-label reveal" style="color:var(--gold-light);border-color:var(--gold-light);margin-bottom:20px;">Get Started</p>
+      <h2 class="final-cta-title reveal" id="final-cta-heading">
+        AIを学ぶだけで終わらせず、<br />
+        御社の業務に使える<span>仕組み</span>として残しませんか。
+      </h2>
+      <p class="final-cta-sub reveal">
+        まずは<strong style="color:var(--gold-light);">5万円</strong>の「AI業務診断＋デモ構築」から始められます。<br />
+        御社の業務でAIがどう使えるのか、実際のデモで確認してください。
+      </p>
+      <div class="reveal">
+        <a
+          href="mailto:info@example.com?subject=AI業務診断＋デモ構築のお申し込み"
+          class="btn-cta btn-cta-large"
+          id="final-cta-btn"
+        >
+          <span><span class="price-accent">5万円</span>で自社のAI活用デモを見る</span>
+          <span aria-hidden="true">→</span>
+        </a>
+        <p class="final-price-note">診断費用：50,000円（税別）・無理な営業なし</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       フッター
+  =========================== -->
+  <footer class="site-footer" role="contentinfo">
+    <p>© 2024 中小企業向けAI業務改善パック ／ 小室秀治</p>
+  </footer>
+
+  <!-- ===========================
+       JavaScript（アコーディオン＋スクロールアニメーション）
+  =========================== -->
+  <script>
+    /* ---------- FAQ アコーディオン ---------- */
+    document.querySelectorAll('.faq-question').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var isOpen = this.getAttribute('aria-expanded') === 'true';
+        var answerId = this.getAttribute('aria-controls');
+        var answer = document.getElementById(answerId);
+
+        // 全て閉じる
+        document.querySelectorAll('.faq-question').forEach(function (b) {
+          b.setAttribute('aria-expanded', 'false');
+        });
+        document.querySelectorAll('.faq-answer').forEach(function (a) {
+          a.classList.remove('is-open');
+        });
+
+        // クリックしたものが閉じていたら開く
+        if (!isOpen) {
+          this.setAttribute('aria-expanded', 'true');
+          answer.classList.add('is-open');
+        }
+      });
+    });
+
+    /* ---------- スクロールアニメーション（IntersectionObserver） ---------- */
+    var revealEls = document.querySelectorAll('.reveal');
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    revealEls.forEach(function (el) { observer.observe(el); });
+  </script>
+</body>
+</html>
